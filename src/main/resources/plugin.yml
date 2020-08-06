@@ -1,0 +1,33 @@
+name: SLDeathLocationBroadcaster
+main: io.github.slazurin.sldeathlocationbroadcaster.SLDeathLocationBroadcaster
+version: 1.1.1
+author: Azurin
+api-version: 1.16
+
+commands:
+    death:
+        description: Check last death location
+        permission-message: You do not have permission to use this command.
+        usage: /death
+    debuginfo:
+        description: Check api data for SLDeathLocationBroadcaster
+        permission-message: You do not have permission to use this command.
+        usage: /debuginfo
+        
+permissions:
+    sldlb.*:
+        default: op
+        children:
+            sldlb.deathlocation: true
+            sldlb.debuginfo: true
+    sldlb.death:
+        description: Allows player to use the /death command
+        default: true
+        children:
+            sldlb.death.otherplayer: true
+    sldlb.death.otherplayer:
+        description: Allows player to use the /death <playername> command
+        default: true
+    sldlb.debuginfo:
+        description: Check api data for SLDeathLocationBroadcaster
+        default: op
