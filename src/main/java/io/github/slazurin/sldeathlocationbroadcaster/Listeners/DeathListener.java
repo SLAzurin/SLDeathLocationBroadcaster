@@ -24,11 +24,8 @@ public class DeathListener implements Listener {
         SLDeathLocationBroadcasterApi api = this.plugin.getApi();
         api.registerDeathLocation(deadPlayer, deathLocation);
         
-        String worldName = e.getEntity().getWorld().getName();
         for (Player p : Bukkit.getOnlinePlayers()) {
-            if (p.getWorld().getName().equals(worldName)) {
-                p.sendMessage(ChatColor.RED + api.getDeathLocationText(deadPlayer));
-            }
+            p.sendMessage(ChatColor.RED + api.getDeathLocationText(deadPlayer));
         }
     }
     
