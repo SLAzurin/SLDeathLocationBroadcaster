@@ -45,10 +45,19 @@ public class SLDeathLocationBroadcasterApi {
         if (l == null) {
             return p.getName() + " did not die recently.";
         }
+        
+        String worldName = "World";
+        if (l.getWorld().getName().endsWith("_the_end")) {
+            worldName = "End";
+        }
+        if (l.getWorld().getName().endsWith("_nether")) {
+            worldName = "Nether";
+        }
+        
         return p.getName() + " died at x: " 
                         + l.getBlockX() + " y: " + 
                         l.getBlockY() + " z: " + 
-                        l.getBlockZ();
+                        l.getBlockZ() + " (" + worldName + ")";
     }
     
 }
