@@ -9,15 +9,19 @@ commands:
         description: Check last death location
         permission-message: You do not have permission to use this command.
         usage: /death
+        permission: sldlb.death
     debuginfo:
         description: Check api data for SLDeathLocationBroadcaster
         permission-message: You do not have permission to use this command.
         usage: /debuginfo
+        permission: sldlb.debuginfo
         
 permissions:
     sldlb.*:
         default: op
         children:
+            sldlb.death: true
+            sldlb.death.otherplayer: true
             sldlb.deathlocation: true
             sldlb.debuginfo: true
     sldlb.death:
