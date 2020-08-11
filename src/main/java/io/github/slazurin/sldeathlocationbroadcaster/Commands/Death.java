@@ -11,10 +11,10 @@ import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
 
 
-public class DeathLocation implements TabExecutor {
+public class Death implements TabExecutor {
     private final SLDeathLocationBroadcaster plugin;
     
-    public DeathLocation(SLDeathLocationBroadcaster plugin) {
+    public Death(SLDeathLocationBroadcaster plugin) {
         this.plugin = plugin;
     }
     

@@ -1,6 +1,6 @@
 package io.github.slazurin.sldeathlocationbroadcaster;
 
-import io.github.slazurin.sldeathlocationbroadcaster.Commands.DeathLocation;
+import io.github.slazurin.sldeathlocationbroadcaster.Commands.Death;
 import io.github.slazurin.sldeathlocationbroadcaster.Commands.DebugInfo;
 import io.github.slazurin.sldeathlocationbroadcaster.Listeners.DeathListener;
 import io.github.slazurin.slvanishapi.SLVanishApi;
@@ -33,7 +33,7 @@ public class SLDeathLocationBroadcaster extends JavaPlugin {
     }
     
     private void registerCommands() {
-        this.getCommand("death").setExecutor(new DeathLocation(this));
+        this.getCommand("death").setExecutor(new Death(this));
         this.getCommand("debuginfo").setExecutor(new DebugInfo(this));
     }
     
