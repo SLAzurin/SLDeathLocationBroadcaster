@@ -22,7 +22,14 @@ public class DeathLocation implements TabExecutor {
     public List<String> onTabComplete(CommandSender cs, Command cmnd, String string, String[] args) {
         if (args.length == 1) {
             List playerNames = new ArrayList<String>();
-            for (Player p : Bukkit.getOnlinePlayers()) {
+            
+            List<Player> players;
+            if (this.plugin.isSvapiEnabled()) {
+                players = this.plugin.getSvapi().getVisiblePlayers();
+            } else {
+                players = new ArrayList<>(Bukkit.getOnlinePlayers());
+            }
+            for (Player p : players) {
                 if (p.getName().toUpperCase().startsWith(args[0].toUpperCase())) {
                     playerNames.add(p.getName());
                 }
@@ -50,11 +57,16 @@ public class DeathLocation implements TabExecutor {
             if (!(cs instanceof Player)) {
                 hasPerm = true;
             } else {
-                hasPerm = cs.hasPermission("sldlb.deathlocation.otherplayer");
+                hasPerm = cs.hasPermission("sldlb.death.otherplayer");
             }
             p = Bukkit.getPlayer(args[0]);
+            if (this.plugin.getSvapi() != null) {
+                if (this.plugin.getSvapi().isVanished(p)) {
+                    p = null;
+                }
+            }
         } else {
-            hasPerm = cs.hasPermission("sldlb.deathlocation");
+            hasPerm = cs.hasPermission("sldlb.death");
             p = (Player) cs;
         }
         
@@ -68,7 +80,7 @@ public class DeathLocation implements TabExecutor {
         if (p != null) {
             cs.sendMessage(ChatColor.RED + this.plugin.getApi().getDeathLocationText(p));
         } else {
-            cs.sendMessage("Player not found.");
+            cs.sendMessage(ChatColor.RED + "Player not found.");
         }
         return true;
         
