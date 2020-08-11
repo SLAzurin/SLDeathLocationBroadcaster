@@ -20,6 +20,11 @@ public class DeathListener implements Listener {
     @EventHandler
     public void onPlayerDeathEvent(PlayerDeathEvent e) {
         Player deadPlayer = e.getEntity();
+        if (this.plugin.isSvapiEnabled()) {
+            if (this.plugin.getSvapi().isVanished(deadPlayer)) {
+                return;
+            }
+        }
         Location deathLocation = e.getEntity().getLocation();
         SLDeathLocationBroadcasterApi api = this.plugin.getApi();
         api.registerDeathLocation(deadPlayer, deathLocation);
