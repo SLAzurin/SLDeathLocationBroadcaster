@@ -22,6 +22,7 @@ public class DeathListener implements Listener {
         Player deadPlayer = e.getEntity();
         if (this.plugin.isSvapiEnabled()) {
             if (this.plugin.getSvapi().isVanished(deadPlayer)) {
+                e.setDeathMessage(null);
                 return;
             }
         }
