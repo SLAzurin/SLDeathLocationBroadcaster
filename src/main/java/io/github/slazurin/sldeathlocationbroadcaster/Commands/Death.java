@@ -21,7 +21,7 @@ public class Death implements TabExecutor {
     @Override
     public List<String> onTabComplete(CommandSender cs, Command cmnd, String string, String[] args) {
         if (args.length == 1) {
-            List playerNames = new ArrayList<String>();
+            List<String> playerNames = new ArrayList<String>();
             
             List<Player> players;
             if (this.plugin.isSvapiEnabled()) {
